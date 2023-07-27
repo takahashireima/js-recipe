@@ -19,21 +19,35 @@
     <section>
       <h3>商品を買う</h3>
       <button id="buy-button-tea">お茶(100円)</button>
+      <button id="buy-button-beer">ビール(150円)</button>
     </section>
     <section>
       <h3>買った商品</h3>
       <div id="display-items"></div>
     </section>
+    <section>
+      <button id="oturi">お釣り</button>
+    </section>
     <script>
       // HTML要素を取得する
       const buyButtonTea = document.getElementById("buy-button-tea")
+      const buyButtonBeer = document.getElementById("buy-button-beer")
       const displayItems = document.getElementById("display-items")
+      const Oturi = document.getElementById("oturi")
 
       // buyButtonTea を押した時の処理
       buyButtonTea.onclick = function () {
-        if (jihankiMoney > 0) {
+        if (jihankiMoney >= 100) {
           displayItems.textContent += "🍵"
           jihankiMoney -= 100
+          DisplayJihankiMoney.textContent = jihankiMoney
+        }
+      }
+
+      buyButtonBeer.onclick = function () {
+        if (jihankiMoney > 150) {
+          displayItems.textContent += "🍺"
+          jihankiMoney -= 150
           DisplayJihankiMoney.textContent = jihankiMoney
         }
       }
@@ -57,6 +71,13 @@
           DisplaySaifu.textContent = saifu
           DisplayJihankiMoney.textContent = jihankiMoney
         }
+      }
+
+      Oturi.onclick = function () {
+        saifu += jihankiMoney
+        jihankiMoney = 0
+        DisplaySaifu.textContent = saifu
+        DisplayJihankiMoney.textContent = jihankiMoney
       }
     </script>
   </body>
