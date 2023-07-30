@@ -13,8 +13,6 @@ addButton.onclick = function () {
     const div = document.createElement("div")
     div.textContent = memos[i]
     memoContainer.append(div)
-
-    console.log(memos[i])
   }
 
   // 取得した内容をDOMに反映する

@@ -1,23 +1,19 @@
-const memo = document.getElementById("memo-Input")
-const button = document.getElementById("add-button")
+const memoInput = document.getElementById("memo-Input")
+const addButton = document.getElementById("add-button")
 const memocontainer = document.getElementById("memo-container")
 
-button.onclick = function () {
-  //カード作成アンド削除
-  cranddelcard()
-
-  //console.log(memo.value)
-  //console.dir(memo) //プロパティ確認
+addButton.onclick = function () {
+  const div = createElement("div", memoInput.value, memocontainer)
+  const deleteButton = createElement("button", "削除", div)
+  deleteButton.onclick = function () {
+    div.remove()
+  }
+  memoInput.value = ""
 }
 
-function cranddelcard() {
-  const card = document.createElement("div")
-  card.textContent = memo.value
-  memocontainer.append(card)
-  const deleteButton = document.createElement("button")
-  deleteButton.textContent = "削除"
-  deleteButton.onclick = function () {
-    card.remove()
-  }
-  card.append(deleteButton)
+const createElement = function (element, textContent, containerElement) {
+  const div = document.createElement(element)
+  div.textContent = textContent
+  containerElement.append(div)
+  return div
 }
